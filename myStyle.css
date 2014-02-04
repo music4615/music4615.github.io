@@ -1,0 +1,66 @@
+#navigation
+{
+	background-color: #045FB4;
+	text-align: center;
+}
+#navigation a:link
+{
+	color: #FFFFFF
+}
+#navigation a:visited
+{
+	color: #FFFFFF
+}
+#navigation a:hover
+{
+	color: #F2F2F2
+}
+#navigation .col-md-1
+{
+	text-align: right;
+	font-size: 20px;
+}
+#words a:link
+{
+	color: #01A9DB;
+}
+#words a:visited
+{
+	color: #01A9DB;
+}
+#words a:hover
+{
+	color: #01A9DB;
+}
+#musiclink a:link
+{
+	color: #848484;
+}
+#musiclink a:visited
+{
+	color: #848484;
+}
+#musiclink a:hover
+{
+	color: #D8D8D8;
+}
+p
+{
+	text-align: justify;
+}
+#projectpic p
+{
+	text-align: center;
+}
+#musiclink p
+{
+	text-align: center;
+}
+#musiclink h5
+{
+	text-align: center;
+}
+hr
+{
+	border-color: #DF0174;
+}
