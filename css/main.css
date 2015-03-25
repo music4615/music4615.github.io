@@ -1,0 +1,43 @@
+#header hr
+{
+	border: none;
+	height: 2px;
+	background-color: #D8D8D8;
+}
+
+#nav a:link
+{
+	color: #01A9DB;
+}
+#nav a:visited
+{
+	color: #01A9DB;
+}
+#nav a:hover
+{
+	text-decoration: none;
+	color: #01A9DB;
+}
+
+p
+{
+	text-align: justify;
+}
+
+#description a:link
+{
+	color: #848484;
+}
+#description a:visited
+{
+	color: #848484;
+}
+#description a:hover
+{
+	color: #848484;
+}
+
+#performance h5
+{
+	color: #848484;
+}
