@@ -55,7 +55,7 @@ $(function () {
                 }
             },
             success: function(data) {
-                console.log(data);
+                console.log("Success");
             }, 
             error: function() {
                 console.log("Error");
