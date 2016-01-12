@@ -39,11 +39,11 @@ function LoadHtml() {
     var url = document.getElementById("url").value;
     var xhttp = new XMLHttpRequest();
     if (xhttp) {
+        xhttp.open("GET", url, true);
         xhttp.setRequestHeader("X-PINGOTHER", "pingpong");
         xhttp.setRequestHeader("Content-Type", "text/html");
         xhttp.onload = GenPage;
         xhttp.onerror = Failure;
-        xhttp.open("GET", url, true);
         xhttp.send();
     }
 }
