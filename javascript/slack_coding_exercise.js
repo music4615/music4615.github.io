@@ -35,26 +35,42 @@
 //     });
 // });
 
-function LoadHtml() {
-    var url = document.getElementById("url").value;
-    var xhttp = new XMLHttpRequest();
-    if (xhttp) {
-        xhttp.open("GET", url, true);
-        xhttp.setRequestHeader("X-PINGOTHER", "pingpong");
-        xhttp.setRequestHeader("Content-Type", "text/html");
-        xhttp.setRequestHeader("Origin", "http://ambertsai.me");
-        xhttp.setRequestHeader("X-Access-Control-Request-Method", "GET");
-        xhttp.setRequestHeader("X-Access-Control-Request-Headers", "X-PINGOTHER");
-        xhttp.onload = GenPage;
-        xhttp.onerror = Failure;
-        xhttp.send();
-    }
-}
+$("#submit").click(function() {
+    $.ajax({
+        url: document.getElementById("url").value,
+        method: "GET",
+        dataType: "jsonp",
+        statusCode: {
+            404: function() {
+                document.getElementById("htmlSource").innerHTML = "Page not found";
+            }
+        },
+        success: function(data) {
+            document.getElementById("htmlSource").innerHTML = data;
+        }
+    });
+});
 
-function GenPage() {
-    document.getElementById("htmlSource").innerHTML = this.responseText;
-}
+// function LoadHtml() {
+//     var url = document.getElementById("url").value;
+//     var xhttp = new XMLHttpRequest();
+//     if (xhttp) {
+//         xhttp.open("GET", url, true);
+//         xhttp.setRequestHeader("X-PINGOTHER", "pingpong");
+//         xhttp.setRequestHeader("Content-Type", "text/html");
+//         xhttp.setRequestHeader("Origin", "http://ambertsai.me");
+//         xhttp.setRequestHeader("X-Access-Control-Request-Method", "GET");
+//         xhttp.setRequestHeader("X-Access-Control-Request-Headers", "X-PINGOTHER");
+//         xhttp.onload = GenPage;
+//         xhttp.onerror = Failure;
+//         xhttp.send();
+//     }
+// }
 
-function Failure() {
-    document.getElementById("htmlSource").innerHTML = "Cannot load page";
-}
+// function GenPage() {
+//     document.getElementById("htmlSource").innerHTML = this.responseText;
+// }
+
+// function Failure() {
+//     document.getElementById("htmlSource").innerHTML = "Cannot load page";
+// }
