@@ -35,9 +35,10 @@
 //     });
 // });
 
-// function GenPage() {
-//     document.getElementById("htmlSource").innerHTML = this.responseText;
-// }
+function GenPage(data) {
+    console.log("Success");
+    document.getElementById("htmlSource").innerHTML = data;
+}
 
 // function Failure() {
 //     document.getElementById("htmlSource").innerHTML = "Cannot load page";
@@ -54,10 +55,7 @@ $(function () {
                     document.getElementById("htmlSource").innerHTML = "Page not found";
                 }
             },
-            success: function(data) {
-                console.log("Success");
-                document.getElementById("htmlSource").innerHTML = data;
-            }, 
+            success: GenPage, 
             error: function() {
                 console.log("Error");
             }
