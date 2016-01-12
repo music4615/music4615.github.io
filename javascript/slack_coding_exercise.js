@@ -42,6 +42,7 @@ function LoadHtml() {
         xhttp.open("GET", url, true);
         xhttp.setRequestHeader("X-PINGOTHER", "pingpong");
         xhttp.setRequestHeader("Content-Type", "text/html");
+        xhttp.setRequestHeader("Origin", "http://ambertsai.me");
         xhttp.setRequestHeader("X-Access-Control-Request-Method", "GET");
         xhttp.setRequestHeader("X-Access-Control-Request-Headers", "X-PINGOTHER");
         xhttp.onload = GenPage;
