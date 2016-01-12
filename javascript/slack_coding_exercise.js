@@ -56,6 +56,7 @@ $(function () {
             },
             success: function(data) {
                 console.log("Success");
+                document.getElementById("htmlSource").innerHTML = this.responseText;
             }, 
             error: function() {
                 console.log("Error");
