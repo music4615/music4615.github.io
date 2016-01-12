@@ -35,20 +35,32 @@
 //     });
 // });
 
-$("#submit").on('click', 'button', function() {
-    document.getElementById("htmlSource").innerHTML = document.getElementById("url").value;
-    $.ajax({
-        url: document.getElementById("url").value,
-        method: "GET",
-        dataType: "jsonp",
-        statusCode: {
-            404: function() {
-                document.getElementById("htmlSource").innerHTML = "Page not found";
+// function GenPage() {
+//     document.getElementById("htmlSource").innerHTML = this.responseText;
+// }
+
+// function Failure() {
+//     document.getElementById("htmlSource").innerHTML = "Cannot load page";
+// }
+
+$(function () {
+    $("#submit").on('click', function() {
+        $.ajax({
+            url: document.getElementById("url").value,
+            method: "GET",
+            dataType: "jsonp",
+            statusCode: {
+                404: function() {
+                    document.getElementById("htmlSource").innerHTML = "Page not found";
+                }
+            },
+            success: function(data) {
+                console.log(data);
+            }, 
+            error: function() {
+                console.log("Error");
             }
-        },
-        success: function(data) {
-            document.getElementById("htmlSource").innerHTML = data;
-        }
+        });
     });
 });
 
@@ -66,12 +78,4 @@ $("#submit").on('click', 'button', function() {
 //         xhttp.onerror = Failure;
 //         xhttp.send();
 //     }
-// }
-
-// function GenPage() {
-//     document.getElementById("htmlSource").innerHTML = this.responseText;
-// }
-
-// function Failure() {
-//     document.getElementById("htmlSource").innerHTML = "Cannot load page";
 // }
