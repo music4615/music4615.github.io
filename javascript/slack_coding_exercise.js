@@ -1,14 +1,10 @@
-function TagSummary (data) {
-    var tags = data.getElementByTagName("*");
-    for (var i = 0; i < 1; i++) {
-        console.log(tags[i]);
-    }
-    document.getElementById("tagSummary").innerHTML = "Summary";
+function TagSummary(data) {
+    document.getElementById("tagSummary").innerHTML = "<h2>HTML Tags Summary</h2>";
 }
 
 function GenPage(data) {
     console.log("Success");
-    document.getElementById("htmlSource").innerHTML = ("<xmp>" + data + "</xmp>");
+    document.getElementById("htmlSource").innerHTML = ("<h2>HTML Document</h2><xmp>" + data + "</xmp>");
     TagSummary(data);
 }
 
