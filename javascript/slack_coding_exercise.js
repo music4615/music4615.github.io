@@ -48,7 +48,7 @@ $(function () {
         $.ajax({
             url: document.getElementById("url").value,
             method: "GET",
-            dataType: "jsonp",
+            dataType: "html",
             statusCode: {
                 404: function() {
                     document.getElementById("htmlSource").innerHTML = "Page not found";
