@@ -4,7 +4,8 @@ function TagSummary(data) {
 
 function GenPage(data) {
     console.log("Success");
-    document.getElementById("htmlSource").innerHTML = ("<h2>HTML Document</h2><xmp>" + data + "</xmp>");
+    var str = "<h2>HTML Document</h2><xmp>" + data + "</xmp>";
+    document.getElementById("htmlSource").innerHTML = (str);
     TagSummary(data);
 }
 
