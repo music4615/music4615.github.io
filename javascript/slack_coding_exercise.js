@@ -35,7 +35,8 @@
 //     });
 // });
 
-$("#submit").click(function() {
+$("#submit").on('click', 'button', function() {
+    document.getElementById("htmlSource").innerHTML = document.getElementById("url").value;
     $.ajax({
         url: document.getElementById("url").value,
         method: "GET",
