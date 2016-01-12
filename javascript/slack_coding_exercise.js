@@ -38,11 +38,14 @@
 function LoadHtml() {
     var url = document.getElementById("url").value;
     var xhttp = new XMLHttpRequest();
-    xhttp.dataType = "html";
-    xhttp.onload = GenPage;
-    xhttp.onerror = Failure;
-    xhttp.open("GET", url, true);
-    xhttp.send();
+    if (xhttp) {
+        xhttp.setRequestHeader("X-PINGOTHER", "pingpong");
+        xhttp.setRequestHeader("Content-Type", "text/html");
+        xhttp.onload = GenPage;
+        xhttp.onerror = Failure;
+        xhttp.open("GET", url, true);
+        xhttp.send();
+    }
 }
 
 function GenPage() {
