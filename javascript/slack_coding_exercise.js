@@ -40,9 +40,10 @@ function GenPage(data) {
     document.getElementById("htmlSource").innerHTML = data;
 }
 
-// function Failure() {
-//     document.getElementById("htmlSource").innerHTML = "Cannot load page";
-// }
+function Failure() {
+    console.log("Error");
+    document.getElementById("htmlSource").innerHTML = "Cannot load page";
+}
 
 $(function () {
     $("#submit").on('click', function() {
@@ -56,9 +57,7 @@ $(function () {
                 }
             },
             success: GenPage, 
-            error: function() {
-                console.log("Error");
-            }
+            error: Failure
         });
     });
 });
