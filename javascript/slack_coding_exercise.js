@@ -1,4 +1,6 @@
 $.fn.tagName = function() {
+    if (this.prop("tagName") === undefined)
+        return undefined;
     return this.prop("tagName").toLowerCase();
 }
 
@@ -8,7 +10,7 @@ function CountTag(dom, tagDictionary) {
             CountTag(dom.childNodes[i], tagDictionary);
         }
     }
-    var tag = $(dom).tagName();
+    var tag = $(dom).prop("tagName");
     if (tag !== undefined) {
         if (!(tag in tagDictionary)) {
             tagDictionary[tag] = 1;
