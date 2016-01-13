@@ -7,7 +7,8 @@ function TagSummary(htmlText) {
 
 function GenPage(data) {
     console.log("Success");
-    var str = "<h2>HTML Document</h2><xmp>" + data + "</xmp>";
+    var dataTransform = data.replace(/&/gm, "&amp;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;");
+    var str = "<h2>HTML Document</h2><pre>" + dataTransform + "</pre>";
     document.getElementById("htmlSource").innerHTML = (str);
     TagSummary(data);
 }
