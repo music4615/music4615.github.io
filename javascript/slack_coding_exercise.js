@@ -8,7 +8,7 @@ function CountTag(dom, tagDictionary) {
             CountTag(dom.childNodes[i], tagDictionary);
         }
     }
-    var tag = $(dom).tagName;
+    var tag = $(dom).tagName();
     if (tag !== undefined) {
         if (!(tag in tagDictionary)) {
             tagDictionary[tag] = 1;
@@ -29,12 +29,15 @@ function TagSummary(htmlText) {
 
     var ul = $("<ul id='tagList'></ul>");
     for (var tag in tagDic) {
+        console.log(tag);
         var li = $("<li></li>");
         var ele = $("<span class='tag' id='" + tag + "'></span>");
+        $(ele).text("&lt;" + tag + "&gt;");
         $(li).append(ele);
         $(li).append(": " + tagDic[tag]);
         $(ul).append(li);
     }
+    $("#tagSummary").append(ul);
 }
 
 function GenPage(data) {
