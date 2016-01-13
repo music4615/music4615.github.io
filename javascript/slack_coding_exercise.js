@@ -1,5 +1,8 @@
-function TagSummary(data) {
+function TagSummary(htmlText) {
     document.getElementById("tagSummary").innerHTML = "<h2>HTML Tags Summary</h2>";
+    var parser = new DOMParser();
+    var htmlDoc = parser.parseFromString(htmlText, "text/html");
+    console.log(htmlDoc.firstChild);
 }
 
 function GenPage(data) {
@@ -22,7 +25,8 @@ $(function () {
             dataType: "html",
             statusCode: {
                 404: function() {
-                    document.getElementById("htmlSource").innerHTML = "404 page not found";
+                    document.getElementById("htmlSource").innerHTML =
+                        "404 page not found";
                 }
             },
             success: GenPage, 
