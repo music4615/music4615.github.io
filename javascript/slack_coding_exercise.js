@@ -1,4 +1,4 @@
-jQuery.fn.tagName() = function() {
+$.fn.tagName = function() {
     return this.prop("tagName").toLowerCase();
 }
 
