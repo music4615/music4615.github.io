@@ -1,9 +1,11 @@
+// Find the tag name of an element in lowercase
 $.fn.TagName = function() {
     if (this.prop("tagName") === undefined)
         return undefined;
     return this.prop("tagName").toLowerCase();
 };
 
+// Count every tag in an HTML document
 function CountTag(dom, tagDictionary) {
     if (dom.childNodes.length !== 0) {
         for (var i = 0; i < dom.childNodes.length; i++) {
@@ -20,6 +22,7 @@ function CountTag(dom, tagDictionary) {
     }
 }
 
+// Summarize the tags; print each tag and the number of the tag
 function TagSummary(htmlText) {
     var header = $("<h2></h2>").text("HTML Tags Summary");
     $("#tagSummary").empty();
@@ -41,6 +44,7 @@ function TagSummary(htmlText) {
     $("#tagSummary").append(ul);
 }
 
+// Generate the page containing the HTML source and the tag summary
 function GenPage(data) {
     var dataTransform = data.replace(/&/gm, "&amp;").replace(/</gm, "&lt;")
                             .replace(/>/gm, "&gt;").replace(/"/gm, "&quot;")
@@ -51,11 +55,13 @@ function GenPage(data) {
     TagSummary(data);
 }
 
+// Show a message when the page is not able to be fetched
 function Failure() {
     console.log("Error");
     $("#htmlSource").replaceWith("Cannot load page");
 }
 
+// When there is a click event, print the results using the above functions
 $(function () {
     $("#submit").on('click', function() {
         $.ajax({
@@ -76,8 +82,8 @@ $(function () {
         var htmlCode = $("#code").html();
         htmlCode = htmlCode.replace(/<span class="color">/gm, '').replace(/<\/span>/gm, '');
         var id = this.id;
-        var colored = new RegExp("(^\&lt;" + id + ".*\&gt;$)", 'gm');
-        htmlCode = htmlCode.replace(colored, "<span class='color'>$1</span>");
+        var colored = new RegExp("^(.*)(\&lt;" + id + ".*\&gt;)", 'gm');
+        htmlCode = htmlCode.replace(colored, "$1<span class='color'>$2</span>");
         $("#code").empty();
         $("#code").append(htmlCode);
     });
