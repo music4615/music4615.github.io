@@ -73,11 +73,18 @@ $(function () {
         });
     });
 
-    $(".tag").on('click', function() {
+    $("#htmlSummary").delegate(".tag", "click", function() {
         var htmlCode = $("#code").val();
         htmlCode.replace(/<span class='color'>/gm, "").replace(/<\/span>/gm, "");
         var id = this.id;
         htmlCode.replace(/id/gm, "<span class='color'>" + id + "</span>");
         $("#htmlSource").replaceWith(htmlCode);
     });
+    // $(".tag").on('click', function() {
+    //     var htmlCode = $("#code").val();
+    //     htmlCode.replace(/<span class='color'>/gm, "").replace(/<\/span>/gm, "");
+    //     var id = this.id;
+    //     htmlCode.replace(/id/gm, "<span class='color'>" + id + "</span>");
+    //     $("#htmlSource").replaceWith(htmlCode);
+    // });
 });
