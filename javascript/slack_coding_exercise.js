@@ -4,21 +4,6 @@ $.fn.TagName = function() {
     return this.prop("tagName").toLowerCase();
 };
 
-function SortArrayByKey(arr) {
-    var keys = [];
-    var sorted = {};
-    for (var key in arr) {
-        if (arr.hasOwnProperty(key)) {
-            keys.push(key);
-        }
-    }
-    keys.sort();
-    for (var i = 0; i < keys.length; i++) {
-        sorted[keys[i]] = arr[keys[i]];
-    }
-    arr = sorted;
-}
-
 function CountTag(dom, tagDictionary) {
     if (dom.childNodes.length !== 0) {
         for (var i = 0; i < dom.childNodes.length; i++) {
@@ -43,10 +28,17 @@ function TagSummary(htmlText) {
     var htmlDoc = parser.parseFromString(htmlText, "text/html");
     var tagDic = new Array();
     CountTag(htmlDoc, tagDic);
-    SortArrayByKey(tagDic);
+
+    var sortedTag = [];
+    for (var tag in tagDic) {
+        if (tagDic.hasOwnProperty(tag))
+            sortedTag.push(tag);
+    }
+    sortedTag.sort();
 
     var ul = $("<ul id='tagList'></ul>");
-    for (var tag in tagDic) {
+    for (var i = 0; i < sortedTag.length;) {
+        var tag = sortedTag[i];
         var li = $("<li></li>");
         var ele = $("<span class='tag' id='" + tag + "'></span>");
         $(ele).text("<" + tag + ">");
