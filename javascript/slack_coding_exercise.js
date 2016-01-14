@@ -74,7 +74,7 @@ $(function () {
 
     $(document).on("click", ".tag", function() {
         var htmlCode = $("#code").html();
-        htmlCode = htmlCode.replace(/<span class='color'>/gm, '').replace(/<\/span>/gm, '');
+        htmlCode = htmlCode.replace(/<span class="color">/gm, '').replace(/<\/span>/gm, '');
         var id = this.id;
         var colored = new RegExp("((^\&lt;)" + id + "(\&gt;$))", 'gm');
         htmlCode = htmlCode.replace(colored, "<span class='color'>$1</span>");
