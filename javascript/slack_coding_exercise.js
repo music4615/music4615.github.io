@@ -44,7 +44,8 @@ function TagSummary(htmlText) {
 function GenPage(data) {
     console.log("Success");
     var dataTransform = data.replace(/&/gm, "&amp;").replace(/</gm, "&lt;")
-                            .replace(/>/gm, "&gt;");
+                            .replace(/>/gm, "&gt;").replace(/"/gm, "&quot;")
+                            .replace(/'/gm, "&#x27;");
     var str = "<h2>HTML Document</h2><pre id='code'>" + dataTransform + "</pre>";
     $("#htmlSource").replaceWith(str);
     TagSummary(data);
@@ -73,6 +74,10 @@ $(function () {
     });
 
     $(".tag").on('click', function() {
-        var str = $("#code").val();
+        var htmlCode = $("#code").val();
+        htmlCode.replace(/<span class='color'>/gm, "").replace(/<\/span>/gm, "");
+        var id = this.id;
+        htmlCode.replace(/id/gm, "<span class='color'>" + id + "</span>");
+        $("#htmlSource").replaceWith(htmlCode);
     });
 });
