@@ -47,7 +47,8 @@ function GenPage(data) {
                             .replace(/>/gm, "&gt;").replace(/"/gm, "&quot;")
                             .replace(/'/gm, "&#x27;");
     var str = "<h2>HTML Document</h2><pre id='code'>" + dataTransform + "</pre>";
-    $("#htmlSource").replaceWith(str);
+    $("#htmlSource").empty();
+    $("#htmlSource").append(str);
     TagSummary(data);
 }
 
@@ -79,6 +80,7 @@ $(function () {
         var id = this.id;
         console.log(id);
         htmlCode.replace(/id/gm, "<span class='color'>" + id + "</span>");
-        $("#code").replaceWith(htmlCode);
+        $("#code").empty();
+        $("#code").append(htmlCode);
     });
 });
