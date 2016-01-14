@@ -1,7 +1,7 @@
 $.fn.tagName = function() {
     if (this.prop("tagName") === undefined)
         return undefined;
-    return this.prop("tagName").toLowerCase();
+    return this.prop("tagName");
 }
 
 function CountTag(dom, tagDictionary) {
@@ -12,6 +12,7 @@ function CountTag(dom, tagDictionary) {
     }
     var tag = $(dom).prop("tagName");
     if (tag !== undefined) {
+        tag = tag.toLowerCase();
         if (!(tag in tagDictionary)) {
             tagDictionary[tag] = 1;
         } else {
@@ -31,7 +32,6 @@ function TagSummary(htmlText) {
 
     var ul = $("<ul id='tagList'></ul>");
     for (var tag in tagDic) {
-        console.log(tag);
         var li = $("<li></li>");
         var ele = $("<span class='tag' id='" + tag + "'></span>");
         $(ele).text("&lt;" + tag + "&gt;");
