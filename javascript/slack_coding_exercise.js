@@ -29,16 +29,8 @@ function TagSummary(htmlText) {
     var tagDic = new Array();
     CountTag(htmlDoc, tagDic);
 
-    var sortedTag = [];
-    for (var tag in tagDic) {
-        if (tagDic.hasOwnProperty(tag))
-            sortedTag.push(tag);
-    }
-    sortedTag.sort();
-
     var ul = $("<ul id='tagList'></ul>");
-    for (var i = 0; i < sortedTag.length;) {
-        var tag = sortedTag[i];
+    for (var tag in tagDic) {
         var li = $("<li></li>");
         var ele = $("<span class='tag' id='" + tag + "'></span>");
         $(ele).text("<" + tag + ">");
