@@ -75,11 +75,12 @@ $(function () {
     });
 
     $(document).on("click", ".tag", function() {
-        var htmlCode = $("#code").text();
+        var htmlCode = $("#code").html();
         htmlCode.replace(/<span class='color'>/gm, "").replace(/<\/span>/gm, "");
         var id = this.id;
+        var colored = new RegExp(id, 'gm');
         console.log(id);
-        htmlCode.replace(/id/gm, "<span class='color'>" + id + "</span>");
+        htmlCode.replace(colored, "<span class='color'>" + id + "</span>");
         $("#code").empty();
         $("#code").append(htmlCode);
     });
