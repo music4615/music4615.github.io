@@ -73,7 +73,7 @@ $(function () {
         });
     });
 
-    $("#htmlSummary").delegate(".tag", "click", function() {
+    $("#htmlSummary").on("click", ".tag", function() {
         var htmlCode = $("#code").val();
         htmlCode.replace(/<span class='color'>/gm, "").replace(/<\/span>/gm, "");
         var id = this.id;
