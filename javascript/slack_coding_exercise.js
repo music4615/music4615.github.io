@@ -42,7 +42,6 @@ function TagSummary(htmlText) {
 }
 
 function GenPage(data) {
-    console.log("Success");
     var dataTransform = data.replace(/&/gm, "&amp;").replace(/</gm, "&lt;")
                             .replace(/>/gm, "&gt;").replace(/"/gm, "&quot;")
                             .replace(/'/gm, "&#x27;");
@@ -65,8 +64,7 @@ $(function () {
             dataType: "html",
             statusCode: {
                 404: function() {
-                    document.getElementById("htmlSource").innerHTML =
-                        "404 page not found";
+                    $("#htmlSource").text("404 page not found");
                 }
             },
             success: GenPage, 
@@ -78,9 +76,8 @@ $(function () {
         var htmlCode = $("#code").html();
         htmlCode = htmlCode.replace(/<span class='color'>/gm, '').replace(/<\/span>/gm, '');
         var id = this.id;
-        var colored = new RegExp(id, 'gm');
-        console.log(id);
-        htmlCode = htmlCode.replace(colored, "<span class='color'>" + id + "</span>");
+        var colored = new RegExp("((^\&lt;)" + id + "(\&gt;$))", 'gm');
+        htmlCode = htmlCode.replace(colored, "<span class='color'>$1</span>");
         $("#code").empty();
         $("#code").append(htmlCode);
     });
