@@ -45,14 +45,14 @@ function GenPage(data) {
     console.log("Success");
     var dataTransform = data.replace(/&/gm, "&amp;").replace(/</gm, "&lt;")
                             .replace(/>/gm, "&gt;");
-    var str = "<h2>HTML Document</h2><pre>" + dataTransform + "</pre>";
-    document.getElementById("htmlSource").innerHTML = (str);
+    var str = "<h2>HTML Document</h2><pre id='code'>" + dataTransform + "</pre>";
+    $("#htmlSource").replaceWith(str);
     TagSummary(data);
 }
 
 function Failure() {
     console.log("Error");
-    document.getElementById("htmlSource").innerHTML = "Cannot load page";
+    $("#htmlSource").replaceWith("Cannot load page");
 }
 
 $(function () {
@@ -70,5 +70,9 @@ $(function () {
             success: GenPage, 
             error: Failure
         });
+    });
+
+    $(".tag").on('click', function() {
+        var str = $("#code").val();
     });
 });
