@@ -34,7 +34,7 @@ function TagSummary(htmlText) {
     for (var tag in tagDic) {
         var li = $("<li></li>");
         var ele = $("<span class='tag' id='" + tag + "'></span>");
-        $(ele).text("&lt;" + tag + "&gt;");
+        $(ele).text("<" + tag + ">");
         $(li).append(ele);
         $(li).append(": " + tagDic[tag]);
         $(ul).append(li);
