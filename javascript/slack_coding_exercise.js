@@ -1,7 +1,22 @@
-$.fn.tagName = function() {
+$.fn.TagName = function() {
     if (this.prop("tagName") === undefined)
         return undefined;
-    return this.prop("tagName");
+    return this.prop("tagName").toLowerCase();
+};
+
+function SortArrayByKey(arr) {
+    var keys = [];
+    var sorted = {};
+    for (var key in arr) {
+        if (arr.hasOwnProperty(key)) {
+            keys.push(key);
+        }
+    }
+    keys.sort();
+    for (var i = 0; i < keys.length; i++) {
+        sorted[keys[i]] = arr[keys[i]];
+    }
+    arr = sorted;
 }
 
 function CountTag(dom, tagDictionary) {
@@ -10,9 +25,8 @@ function CountTag(dom, tagDictionary) {
             CountTag(dom.childNodes[i], tagDictionary);
         }
     }
-    var tag = $(dom).prop("tagName");
+    var tag = $(dom).TagName();
     if (tag !== undefined) {
-        tag = tag.toLowerCase();
         if (!(tag in tagDictionary)) {
             tagDictionary[tag] = 1;
         } else {
@@ -29,6 +43,7 @@ function TagSummary(htmlText) {
     var htmlDoc = parser.parseFromString(htmlText, "text/html");
     var tagDic = new Array();
     CountTag(htmlDoc, tagDic);
+    SortArrayByKey(tagDic);
 
     var ul = $("<ul id='tagList'></ul>");
     for (var tag in tagDic) {
